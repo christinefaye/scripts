@@ -22,7 +22,7 @@ class cHost:
     self.pwd = passwd		# Host password
     self.ip = ip		# Host ip address
     self.url = url.strip()	# Host url
-    self.cnxn = None		# a cConnect object
+    self.cxn = None		# a cConnect object
     if not self.ip:
       self.urlToIp()
       if self.validateIPv4():
@@ -39,10 +39,10 @@ class cHost:
       return True
     return None
 
-  def createCnxn(self):
+  def createCxn(self):
     ''' Create a connection '''
-    self.cnxn = cConnect(self.usr,self.pwd,self.ip)
-    self.cnxn.ssh()
+    self.cxn = cConnect(self.usr,self.pwd,self.ip)
+    self.cxn.ssh()
 
 #----------END CLASS-------------#
 

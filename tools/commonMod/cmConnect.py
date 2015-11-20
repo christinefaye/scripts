@@ -15,10 +15,10 @@ class cConnect:
   # passwd	: string for host password
   # ip		: string for host ip
   def __init__(self,user,passwd,ip):
+    assert user and passwd and ip
     self.usr = user		# Host username
     self.pwd = passwd		# Host password
     self.ip = ip		# Host ip address
-    self.ssh = None		# Paramiko SSH object
 
   def ssh(self):
     ''' SSH connection to host '''
