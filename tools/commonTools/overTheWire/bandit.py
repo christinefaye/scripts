@@ -11,6 +11,8 @@ def main():
 
   # Bandit host
   b = cHost(usr,pw,url=url)
+  # Connect to host
+  b.createCnxn()
 
 if __name__=="__main__":
   main()

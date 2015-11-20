@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
 import socket
-
+from cmConnect import cConnect
 '''
 Module to describe host properties
 
@@ -22,9 +22,11 @@ class cHost:
     self.pwd = passwd		# Host password
     self.ip = ip		# Host ip address
     self.url = url.strip()	# Host url
+    self.cnxn = None		# a cConnect object
     if not self.ip:
       self.urlToIp()
-      print self.validateIPv4()
+      if self.validateIPv4():
+        assert self.ip
     assert self.usr and self.pwd and self.ip
 
   def urlToIp(self):
@@ -36,6 +38,11 @@ class cHost:
     if socket.inet_aton(self.ip):
       return True
     return None
+
+  def createCnxn(self):
+    ''' Create a connection '''
+    self.cnxn = cConnect(self.usr,self.pwd,self.ip)
+    self.cnxn.ssh()
 
 #----------END CLASS-------------#
 
